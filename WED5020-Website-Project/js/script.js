@@ -1,1 +1,18 @@
-document.addEventListener("DOMContentLoaded",()=>{const f=document.getElementById("enquiryForm");const m=document.getElementById("formMessage");if(f&&m){f.addEventListener("submit",e=>{e.preventDefault();m.textContent="Thank you. Your enquiry has been captured for this website demonstration.";f.reset()})}});
+document.addEventListener("DOMContentLoaded", () => {
+
+    const form = document.getElementById("enquiryForm");
+    const message = document.getElementById("formMessage");
+
+    if (form && message) {
+
+        form.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+            message.textContent =
+                "Thank you. Your enquiry has been captured for this website demonstration.";
+
+            form.reset();
+        });
+    }
+});

@@ -1,23 +1,25 @@
-/* =========================================
-   YEAST ARTISAN BAKERY & GROCER
-   Main Website Stylesheet
-   ========================================= */
-
-
-/* =========================================
-   1. GENERAL STYLES
-   ========================================= */
-
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    font-size: 1rem;
     line-height: 1.6;
+    letter-spacing: 0.01em;
     color: #2b211b;
     background: #fffaf5;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .wrap {
@@ -26,13 +28,9 @@ body {
     margin: 0 auto;
 }
 
-
-/* =========================================
-   2. HEADER
-   ========================================= */
-
 header {
     background: #3d2b1f;
+    color: white;
     padding: 18px 0;
 }
 
@@ -43,11 +41,6 @@ header .wrap {
     gap: 20px;
 }
 
-
-/* =========================================
-   3. LOGO
-   ========================================= */
-
 .logo {
     color: white;
     text-decoration: none;
@@ -55,11 +48,6 @@ header .wrap {
     font-weight: bold;
     letter-spacing: 0.12em;
 }
-
-
-/* =========================================
-   4. NAVIGATION
-   ========================================= */
 
 nav {
     display: flex;
@@ -78,14 +66,28 @@ nav a:hover {
     text-decoration: underline;
 }
 
+nav a:focus {
+    outline: 3px solid #f4c7a1;
+    outline-offset: 3px;
+}
 
-/* =========================================
-   5. HERO SECTION
-   ========================================= */
+nav a:active {
+    opacity: 0.7;
+}
+
+.hero,
+.banner {
+    background: #ead7c2;
+}
 
 .hero {
-    background: #ead7c2;
     padding: 80px 0;
+}
+
+.hero h1,
+.banner h1 {
+    margin: 10px 0;
+    font-weight: 700;
 }
 
 .hero h1 {
@@ -93,37 +95,21 @@ nav a:hover {
     line-height: 1.05;
 }
 
-
-/* =========================================
-   6. PAGE BANNER
-   ========================================= */
-
 .banner {
-    background: #ead7c2;
-    padding: 40px 0;
+    padding: 50px 0;
 }
 
-
-/* =========================================
-   7. CONTENT SECTIONS
-   ========================================= */
+.banner h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+}
 
 .section {
     padding: 50px 0;
 }
 
-.narrow {
-    max-width: 800px;
-}
-
-
-/* =========================================
-   8. PRODUCT CARDS
-   ========================================= */
-
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
@@ -132,12 +118,23 @@ nav a:hover {
     border: 1px solid #e5d9cf;
     border-radius: 10px;
     padding: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.cards article:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+    transform: translateY(-2px);
+}
 
-/* =========================================
-   9. BUTTONS
-   ========================================= */
+/* Product images */
+.cards img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
 
 .button {
     display: inline-block;
@@ -156,14 +153,22 @@ nav a:hover {
     background: #5a4030;
 }
 
+.button:focus {
+    outline: 3px solid #f4c7a1;
+    outline-offset: 3px;
+}
 
-/* =========================================
-   10. FORMS
-   ========================================= */
+.button:active {
+    transform: translateY(1px);
+}
+
+.narrow {
+    max-width: 800px;
+}
 
 form {
     display: grid;
-    gap: 12px;
+    gap: 16px;
 }
 
 form label {
@@ -183,32 +188,45 @@ textarea {
     background: white;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #ead7c2;
+    border-color: #3d2b1f;
+}
+
 textarea {
     resize: vertical;
 }
 
-
-/* =========================================
-   11. FOOTER
-   ========================================= */
-
 footer {
     background: #2a1d16;
     color: white;
+    text-align: center;
     padding: 25px 0;
     margin-top: 30px;
 }
 
-
-/* =========================================
-   12. RESPONSIVE DESIGN
-   ========================================= */
-
-@media (max-width: 700px) {
+/* Tablet layout */
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     header .wrap {
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    .wrap {
+        width: 94%;
+    }
+
+    header {
+        padding: 15px 0;
     }
 
     nav {
@@ -218,10 +236,15 @@ footer {
 
     nav a {
         padding: 6px 2px;
+        font-size: 0.95rem;
     }
 
     .hero {
         padding: 55px 0;
+    }
+
+    .banner {
+        padding: 35px 0;
     }
 
     .section {
@@ -230,5 +253,13 @@ footer {
 
     .cards {
         grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .cards img {
+        height: 200px;
     }
 }
